@@ -1,17 +1,21 @@
 import { useState } from "react"
+import { useProductsContext } from '../hooks/useProductsContext'
 
 const ProductForm = () => {
+    const { dispatch } = useProductsContext()
     const [model, setModel] = useState('')
     const [year, setYear] = useState('')
     const [price, setPrice] = useState('')
     const [engine_type, setEngineType] = useState('')
     const [transmission, setTransmission] = useState('')
+    const [VIN, setVIN] = useState('')
+    const [color, setColor] = useState('')
     const [error, setError] = useState(null)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const product = { model, year, price, engine_type, transmission }
+        const product = { model, year, price, engine_type, transmission, VIN, color }
 
         const response = await fetch('/api/Products', {
             method: 'POST',
@@ -31,8 +35,11 @@ const ProductForm = () => {
             setPrice('')
             setEngineType('')
             setTransmission('')
+            setVIN('')
+            setColor('')
             setError(null)
             console.log('new product added', json)
+            dispatch({ type: 'CREATE_PRODUCT', payload: json })
         }
     }
 
@@ -81,6 +88,22 @@ const ProductForm = () => {
                 type="text"
                 onChange={(e) => setTransmission(e.target.value)}
                 value={transmission}
+                style={{ backgroundColor: '#000', color: '#fff' }}
+            />
+
+            <label style={{ color: '#555' }}>Product VIN:</label>
+            <input
+                type="text"
+                onChange={(e) => setVIN(e.target.value)}
+                value={VIN}
+                style={{ backgroundColor: '#000', color: '#fff' }}
+            />
+
+            <label style={{ color: '#555' }}>Product Color:</label>
+            <input
+                type="text"
+                onChange={(e) => setColor(e.target.value)}
+                value={color}
                 style={{ backgroundColor: '#000', color: '#fff' }}
             />
 

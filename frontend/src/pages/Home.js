@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
+import { useProductsContext } from '../hooks/useProductsContext'
 
 // components
 import ProductDetails from '../components/ProductDetails'
 import ProductForm from '../components/ProductForm'
 
 const Home = () => {
-    const [product, createProducts] = useState(null)
+    const { products, dispatch } = useProductsContext()
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -13,17 +14,17 @@ const Home = () => {
             const json = await response.json()
 
             if (response.ok) {
-                createProducts(json)
+                dispatch({ type: 'SET_PRODUCTS', payload: json })
             }
         }
 
         fetchProducts()
-    }, [])
+    },)
 
     return (
         <div className="home">
             <div className="products">
-                {product && product.map((product) => (
+                {products && products.map((product) => (
                     <ProductDetails key={product._id} product={product} />
                 ))}
             </div>

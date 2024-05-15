@@ -3,15 +3,15 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const prodcutSchema = new Schema({
     VIN: {
-        type: Number,
+        type: String,
         required: true
     },
     price: {
-        type: Number,
+        type: String,
         required: true
     },
     year: {
-        type: Number,
+        type: String,
         required: true
     },
     engine_type: {
