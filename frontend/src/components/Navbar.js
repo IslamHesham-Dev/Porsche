@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom'
 //import logo from '../images/Porsche-Logo.png';
 //import logo2 from '../images/Porsche-Logo (1).png';
-import logo3 from '../images/Porsche-Logo (2).png';
+//import logo3 from '../images/Porsche-Logo (2).png';
+import logo4 from '../images/Porsche-Logo (22).png';
 
 
 const Navbar = () => {
@@ -10,7 +11,7 @@ const Navbar = () => {
         <header>
             <div className="container">
                 <Link to="/">
-                    <img src={logo3} alt="PorscheLogo" style={{ width: '200px', height: '200' }} />
+                    <img src={logo4} alt="PorscheLogo" style={{ width: '200px', height: '200' }} />
 
                 </Link>
             </div>
