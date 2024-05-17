@@ -23,7 +23,7 @@ const ProductDetails = ({ product }) => {
             <p><strong>Transmission: </strong>{product.transmission}</p>
             <p><strong>VIN: </strong>{product.VIN}</p>
             <p><strong>Color: </strong>{product.color}</p>
-            <span onClick={handleClick}>delete</span>
+            <span className="material-symbols-outlined" onClick={handleClick}>delete</span>
         </div>
     )
 }

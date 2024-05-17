@@ -5,7 +5,7 @@
 /* layout */
 :root {
   --primary: #913d23;
-  --error: #e7195a;
+  --error: #913d23;
 }
 
 body {
@@ -125,9 +125,7 @@ input {
   border-radius: 4px;
   box-sizing: border-box;
   background: #ffffff;
-  /* Set input background color to white */
   color: #000000;
-  /* Set input text color to black */
 }
 
 form button {
@@ -142,9 +140,13 @@ form button {
 
 div.error {
   padding: 10px;
-  background: #ffffff;
+  background: #000000;
   border: 1px solid var(--error);
   color: var(--error);
   border-radius: 4px;
   margin: 20px 0;
+}
+
+input.error {
+  border: 1px solid var(--error);
 }

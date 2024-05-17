@@ -32,11 +32,25 @@ const getCustomer = async (req, res) => {
 
 //create new customer
 const createCustomer = async (req, res) => {
-    const { customer_id, username, password, email, birth_date } = req.body
+    //const { customer_id, username, password, email, birth_date } = req.body
+    const { username, password } = req.body
+
+    let emptyFields = []
+
+    if (!username) {
+        emptyFields.push('username')
+    }
+    if (!password) {
+        emptyFields.push('password')
+    }
+    if (emptyFields.length > 0) {
+        return res.status(400).json({ error: 'Please fill in all the fields', emptyFields })
+    }
 
     // add a doc to db
     try {
-        const customer = await Customer.create({ customer_id, username, password, email, birth_date })
+        //const customer = await Customer.create({ customer_id, username, password, email, birth_date })
+        const customer = await Customer.create({ username, password })
         res.status(200).json(customer)
     } catch (error) {
         res.status(400).json({ error: error.message })
@@ -90,7 +104,8 @@ const updateCustomer = async (req, res) => {
 
 const register = async (req, res) => {
     try {
-        const { birth_date, email, username, password, customer_id } = req.body;
+        //const { birth_date, email, username, password, customer_id } = req.body;
+        const { username, password } = req.body;
         const existingCustomer = await Customer.findOne({ username });
 
         if (existingCustomer) {
@@ -99,9 +114,9 @@ const register = async (req, res) => {
 
         const hashedPassword = await bcrypt.hash(password, 10);
         const newCustomer = new Customer({
-            customer_id,
-            birth_date,
-            email,
+            /*customer_id,*/
+            /*birth_date,*/
+            /*email,*/
             username,
             password: hashedPassword,
         });

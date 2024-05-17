@@ -31,12 +31,39 @@ const getProduct = async (req, res) => {
 const createProduct = async (req, res) => {
     const { VIN, price, year, engine_type, transmission, model, color } = req.body
 
+    let emptyFields = []
+
+    if (!VIN) {
+        emptyFields.push('VIN')
+    }
+    if (!price) {
+        emptyFields.push('price')
+    }
+    if (!year) {
+        emptyFields.push('year')
+    }
+    if (!engine_type) {
+        emptyFields.push('engine_type')
+    }
+    if (!transmission) {
+        emptyFields.push('transmission')
+    }
+    if (!model) {
+        emptyFields.push('model')
+    }
+    if (!color) {
+        emptyFields.push('color')
+    }
+    if (emptyFields.length > 0) {
+        return res.status(400).json({ error: 'Please fill in all the fields', emptyFields })
+    }
+
     // add a doc to db
     try {
         const product = await Product.create({ VIN, price, year, engine_type, transmission, model, color })
         res.status(200).json(product)
     } catch (error) {
-        res.status(400).json({ error: error.message })
+        res.status(400).json({ error: error.message, emptyFields })
     }
 }
 

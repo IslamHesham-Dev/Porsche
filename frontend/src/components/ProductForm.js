@@ -11,6 +11,7 @@ const ProductForm = () => {
     const [VIN, setVIN] = useState('')
     const [color, setColor] = useState('')
     const [error, setError] = useState(null)
+    const [emptyFields, setEmptyFields] = useState([])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -28,8 +29,11 @@ const ProductForm = () => {
 
         if (!response.ok) {
             setError(json.error)
+            setEmptyFields(json.emptyFields)
         }
         if (response.ok) {
+            setEmptyFields([])
+            setError(null)
             setModel('')
             setYear('')
             setPrice('')
@@ -37,8 +41,7 @@ const ProductForm = () => {
             setTransmission('')
             setVIN('')
             setColor('')
-            setError(null)
-            console.log('new product added', json)
+            //console.log('new product added', json)
             dispatch({ type: 'CREATE_PRODUCT', payload: json })
         }
     }
@@ -53,6 +56,7 @@ const ProductForm = () => {
                 onChange={(e) => setModel(e.target.value)}
                 value={model}
                 style={{ backgroundColor: '#000', color: '#fff' }}
+                className={emptyFields.includes('model') ? 'error' : ''}
             />
 
 
@@ -62,6 +66,7 @@ const ProductForm = () => {
                 onChange={(e) => setYear(e.target.value)}
                 value={year}
                 style={{ backgroundColor: '#000', color: '#fff' }}
+                className={emptyFields.includes('year') ? 'error' : ''}
             />
 
 
@@ -71,6 +76,7 @@ const ProductForm = () => {
                 onChange={(e) => setPrice(e.target.value)}
                 value={price}
                 style={{ backgroundColor: '#000', color: '#fff' }}
+                className={emptyFields.includes('price') ? 'error' : ''}
             />
 
 
@@ -80,6 +86,7 @@ const ProductForm = () => {
                 onChange={(e) => setEngineType(e.target.value)}
                 value={engine_type}
                 style={{ backgroundColor: '#000', color: '#fff' }}
+                className={emptyFields.includes('engine_type') ? 'error' : ''}
             />
 
 
@@ -89,6 +96,7 @@ const ProductForm = () => {
                 onChange={(e) => setTransmission(e.target.value)}
                 value={transmission}
                 style={{ backgroundColor: '#000', color: '#fff' }}
+                className={emptyFields.includes('transmission') ? 'error' : ''}
             />
 
             <label style={{ color: '#555' }}>Product VIN:</label>
@@ -97,6 +105,7 @@ const ProductForm = () => {
                 onChange={(e) => setVIN(e.target.value)}
                 value={VIN}
                 style={{ backgroundColor: '#000', color: '#fff' }}
+                className={emptyFields.includes('VIN') ? 'error' : ''}
             />
 
             <label style={{ color: '#555' }}>Product Color:</label>
@@ -105,6 +114,7 @@ const ProductForm = () => {
                 onChange={(e) => setColor(e.target.value)}
                 value={color}
                 style={{ backgroundColor: '#000', color: '#fff' }}
+                className={emptyFields.includes('color') ? 'error' : ''}
             />
 
             <button>Add Product</button>

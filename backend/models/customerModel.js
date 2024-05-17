@@ -2,10 +2,7 @@ const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema
 const customerSchema = new Schema({
-    customer_id: {
-        type: String,
-        required: true,
-    },
+
     username: {
         type: String,
         required: true,
@@ -14,7 +11,17 @@ const customerSchema = new Schema({
         type: String,
         required: true
     },
-    email: {
+}, { timestamps: true })
+
+module.exports = mongoose.model('Customer', customerSchema, "Customers")
+
+/*customer_id: {
+    type: String,
+    required: true,
+},*/
+
+/*
+email: {
         type: String,
         required: true
     },
@@ -22,6 +29,4 @@ const customerSchema = new Schema({
         type: String,
         required: true
     },
-}, { timestamps: true })
-
-module.exports = mongoose.model('Customer', customerSchema, "Customers")
+    */
