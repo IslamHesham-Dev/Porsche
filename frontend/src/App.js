@@ -3,29 +3,27 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 // pages & components
 import Home from './pages/Home'
-//import CustomerHome from './pages/CustomerHome';
+import Login from './pages/Login'
+import Signup from './pages/Signup'
 import Navbar from './components/Navbar'
-import Login from './components/Login';
-import { CustomersContextProvider } from './context/CustomersContext';
+import Shop from './components/Shop'
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <CustomersContextProvider>
-          <Navbar />
-          <div className="pages">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/Login" element={<Login />} />
-            </Routes>
-          </div>
-        </CustomersContextProvider>
+        <Navbar />
+        <div className="pages">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/shop" element={<Shop />} />
+          </Routes>
+        </div>
       </BrowserRouter>
     </div>
   );
 }
 
 export default App;
-
-//<Route path="/Store" element={<CustomerHome />} />

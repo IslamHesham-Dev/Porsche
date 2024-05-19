@@ -1,3 +1,4 @@
+/*
 /* google font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap');
 
@@ -9,7 +10,6 @@
 }
 
 body {
-  background: #f1f1f1;
   margin: 0;
   font-family: "Poppins";
 }
@@ -58,7 +58,7 @@ header a {
 
 
 .App {
-  background-image: url('C:\Users\6545t\Desktop\Porsche\frontend\src\images\PORSCHE_BG.jpg');
+  background-image: url('./images/PORSCHE_BG.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -149,4 +149,59 @@ div.error {
 
 input.error {
   border: 1px solid var(--error);
+}
+
+/* navbar */
+nav {
+  display: flex;
+  align-items: center;
+}
+
+nav div {
+  display: flex;
+  gap: 10px;
+  /* Add space between the links */
+}
+
+nav a {
+  color: #000000;
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  /* Optional: background for links */
+  transition: background 0.3s;
+  margin-left: 10px;
+}
+
+/* auth forms */
+form.signup,
+form.login {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #000000;
+  border-radius: 4px;
+}
+
+nav button {
+  background: #000000;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-family: "Poppins";
+  cursor: pointer;
+  font-size: 1em;
+}
+
+/* auth forms */
+form.signup,
+form.login {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #000000;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.8);
 }

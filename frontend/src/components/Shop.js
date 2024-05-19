@@ -1,14 +1,9 @@
 import { useEffect } from 'react'
 import { useProductsContext } from '../hooks/useProductsContext'
-//import { useLocation, useNavigate } from 'react-router-dom'
+import ProductDetails2 from '../components/ProductDetails2'
 
-// components
-import ProductDetails from '../components/ProductDetails'
-import ProductForm from '../components/ProductForm'
-
-const Home = () => {
+const Shop = () => {
     const { products, dispatch } = useProductsContext()
-    //const location = useLocation()
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -24,15 +19,14 @@ const Home = () => {
     },)
 
     return (
-        <div className="home">
+        <div className="shop">
             <div className="products">
                 {products && products.map((product) => (
-                    <ProductDetails key={product._id} product={product} />
+                    <ProductDetails2 key={product._id} product={product} />
                 ))}
             </div>
-            <ProductForm />
-        </div >
+        </div>
     )
 }
 
-export default Home
+export default Shop

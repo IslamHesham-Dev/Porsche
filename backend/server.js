@@ -3,7 +3,8 @@ require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const productRoutes = require('./routes/Products')
-const customerRoutes = require('./routes/Customers')
+const userRoutes = require('./routes/user')
+//const customerRoutes = require('./routes/Customers')
 const orderRoutes = require('./routes/Orders')
 
 // express app
@@ -19,7 +20,8 @@ app.use((req, res, next) => {
 
 // routes
 app.use('/api/Products', productRoutes)
-app.use('/api/Customers', customerRoutes)
+app.use('/api/users', userRoutes)
+//app.use('/api/Customers', customerRoutes)
 app.use('/api/Orders', orderRoutes)
 
 // connect to db
