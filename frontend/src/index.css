@@ -62,6 +62,7 @@ header a {
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  min-height: 100vh;
 }
 
 
@@ -168,7 +169,7 @@ nav a {
   text-decoration: none;
   padding: 6px 10px;
   border-radius: 4px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(109, 107, 107, 0.1);
   /* Optional: background for links */
   transition: background 0.3s;
   margin-left: 10px;

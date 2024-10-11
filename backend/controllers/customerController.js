@@ -119,7 +119,8 @@ const register = async (req, res) => {
             /*email,*/
             username,
             password: hashedPassword,
-        });
+        }); za`
+        `
         await newCustomer.save();
 
         res.status(201).json({ message: "Customer registered successfully" });

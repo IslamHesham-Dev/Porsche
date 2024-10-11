@@ -8,6 +8,7 @@ import Signup from './pages/Signup'
 import Navbar from './components/Navbar'
 import Shop from './components/Shop'
 
+
 function App() {
   return (
     <div className="App">
